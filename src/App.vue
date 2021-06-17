@@ -47,14 +47,6 @@ ul li {
   padding: 1rem;
 }
 
-.cart {
-  margin-top: 10px;
-  margin-right: 25px;
-  float: right;
-  border: 1px solid #d8d8d8;
-  padding: 5px 20px;
-}
-
 .review-form {
   width: 400px;
   padding: 20px;

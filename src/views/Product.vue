@@ -6,6 +6,7 @@
       <ProductAddRemove :inStock="inStock" @addToCart="addToCart" @removeFromCart="removeFromCart"/>
       <ProductColors :variants="variants" :updateProduct="updateProduct"/>
       <ProductReview/>
+      {{ products }}
     </div>
   </div>
 </template>
@@ -32,6 +33,7 @@ export default {
   data() {
     return {
       selectedVariant: 0,
+      products: "",
       variants: [
        {
           variantId: 2234,
@@ -44,21 +46,40 @@ export default {
           variantId: 2235,
           variantColor: "blue",
           variantImage: BlueSocks,
-          variantQuantity: 0
+          variantQuantity: 2
         }
       ],
     }
   },
   methods: {
     addToCart() {
-      this.$store.commit('addProduct', this.variants)
+      this.$store.commit('addProduct', this.variants[this.selectedVariant])
     },
     removeFromCart() {
-      this.$store.commit('removeProduct', this.variants)
+      this.$store.commit('removeProduct', this.variants[this.selectedVariant])
     },
     updateProduct(index) {
       this.selectedVariant = index
     },
+    productAxios() {
+      window.axios.get('/product', {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      .then((response) => {
+        this.products = response.data
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+    }
+  },
+  mounted() {
+    this.productAxios()
+  },
+  created() {
+    console.log(this.$store.state.product)
   },
   computed: {
     image() {

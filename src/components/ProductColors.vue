@@ -28,20 +28,4 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 
-//.colors {
-//  width: 60%;
-//}
-//
-//#colorSocks {
-//  float: left;
-//  margin-left: 10px;
-//}
-//
-//.color-box {
-//  width: 40px;
-//  height: 40px;
-//  border-radius: 50%;
-//  margin-top: 5px;
-//}
-
 </style>
